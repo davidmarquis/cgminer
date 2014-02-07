@@ -316,7 +316,7 @@ static int crypto_hash( unsigned char *out, const unsigned char *in, unsigned in
 void keccak_regenhash(struct work *work)
 {
 	uint256 result;
-        crypto_hash(&result, &work->data[0], &work->data[80]);
+	crypto_hash((unsigned char*)&result, &work->data[0], 80);
 	memcpy(work->hash, &result, 32);
 }
 
